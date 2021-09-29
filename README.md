@@ -28,7 +28,7 @@ As a result, we need a mechanism to refresh the token, hence this project.
 
 This project is intended to be used as a library.
 
-Import `git.vzbuilders.com/theparanoids/grafeas-rds/rds` to use it.
+Import `github.com/theparanoids/grafeas-rds/rds` to use it.
 
 Note that the Go version has to be >= `1.17` (see [go.mod](go.mod)).
 

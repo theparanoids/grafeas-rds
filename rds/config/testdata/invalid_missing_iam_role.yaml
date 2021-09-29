@@ -1,0 +1,20 @@
+# Copyright Yahoo 2021
+# Licensed under the terms of the Apache License 2.0.
+# See LICENSE file in project root for terms.
+grafeas:
+  storage_type: "rds"
+  rds:
+    host: "some-host.rds.amazonaws.com"
+    user: "grafeas_rw"
+    ssl_root_cert: "/opt/rds-ca-2019-root.pem"
+    pagination_key: "some_random_key"
+    conn_pool:
+      max_open_conns: 50
+      max_idle_conns: 25
+      conn_max_lifetime_in_seconds: 1800
+      conn_max_idle_time_in_seconds: 900
+    iam_auth:
+      region: "us-west-2"
+      credentials_provider:
+        api_endpoint: "https://zts.athenz.company.com:4443/zts/v1"
+        athenz_domain: "grafeas"

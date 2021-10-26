@@ -97,7 +97,10 @@ func TestConnectorConnect(t *testing.T) {
 		driver: mockDriver,
 	}
 	mockDriver.EXPECT().Open(c.dsn).Times(1)
-	c.Connect(context.Background())
+	_, err := c.Connect(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
 }
 
 func TestConnectorDriver(t *testing.T) {

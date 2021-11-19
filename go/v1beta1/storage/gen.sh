@@ -21,13 +21,13 @@ main() {
   export GOBIN
   go install github.com/golang/mock/mockgen
 
-  # Make sure that we are using the mockgen which is just built to generate mock code.
+  # Make sure that we are using the mockgen which is just built to generate mocks code.
   export PATH=$GOBIN:$PATH
-  mockgen -package rds -destination driver_mock_test.go database/sql/driver Driver
-  mockgen -package rds -destination conn_pool_mgr_mock_test.go . ConnPoolMgr
-  mockgen -package rds -destination storage_mock_test.go . Storage
-  mockgen -package rds -destination credentials_creator_mock_test.go . CredentialsCreator
-  mockgen -package rds -destination storage_creator_mock_test.go . StorageCreator
+  mockgen -package mocks -destination ../mocks/driver_mock.go database/sql/driver Driver
+  mockgen -package mocks -destination ../mocks/conn_pool_mgr_mock.go . ConnPoolMgr
+  mockgen -package mocks -destination ../mocks/storage_mock.go . Storage
+  mockgen -package mocks -destination ../mocks/credentials_creator_mock.go . CredentialsCreator
+  mockgen -package storage -destination storage_creator_mock_test.go . StorageCreator
 }
 
 main

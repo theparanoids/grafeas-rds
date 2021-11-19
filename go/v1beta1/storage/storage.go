@@ -1,7 +1,7 @@
 // Copyright Yahoo 2021
 // Licensed under the terms of the Apache License 2.0.
 // See LICENSE file in project root for terms.
-package rds
+package storage
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/grafeas/grafeas/go/config"
 	"github.com/grafeas/grafeas/go/v1beta1/storage"
-	rdsconfig "github.com/theparanoids/grafeas-rds/rds/config"
+	rdsconfig "github.com/theparanoids/grafeas-rds/go/config"
 )
 
 const (

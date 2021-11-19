@@ -1,7 +1,7 @@
 // Copyright Yahoo 2021
 // Licensed under the terms of the Apache License 2.0.
 // See LICENSE file in project root for terms.
-package rds
+package storage
 
 import (
 	"errors"
@@ -10,10 +10,11 @@ import (
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws/credentials"
-	gomock "github.com/golang/mock/gomock"
+	"github.com/golang/mock/gomock"
 	"github.com/grafeas/grafeas/go/config"
 
-	rdsconfig "github.com/theparanoids/grafeas-rds/rds/config"
+	rdsconfig "github.com/theparanoids/grafeas-rds/go/config"
+	"github.com/theparanoids/grafeas-rds/go/v1beta1/mocks"
 )
 
 func TestStorageProviderProvide(t *testing.T) {
@@ -38,9 +39,9 @@ func TestStorageProviderProvide(t *testing.T) {
 		name         string
 		expect       func(*testCase)
 		conf         config.StorageConfiguration
-		store        *MockStorage
+		store        *mocks.MockStorage
 		storeCreator *MockStorageCreator
-		credsCreator *MockCredentialsCreator
+		credsCreator *mocks.MockCredentialsCreator
 		wantErrMsg   string
 	}
 	tests := []testCase{
@@ -57,9 +58,9 @@ func TestStorageProviderProvide(t *testing.T) {
 				tt.store.EXPECT().SetConnMaxIdleTime(time.Duration(conf.ConnMaxIdleTimeInSeconds) * time.Second).Times(1)
 			},
 			conf:         validConf,
-			store:        NewMockStorage(mockCtrl),
+			store:        mocks.NewMockStorage(mockCtrl),
 			storeCreator: NewMockStorageCreator(mockCtrl),
-			credsCreator: NewMockCredentialsCreator(mockCtrl),
+			credsCreator: mocks.NewMockCredentialsCreator(mockCtrl),
 		},
 		{
 			name: "invalid config",
@@ -73,7 +74,7 @@ func TestStorageProviderProvide(t *testing.T) {
 				tt.credsCreator.EXPECT().Create(gomock.Any()).Times(1).Return(credentials.AnonymousCredentials, nil)
 			},
 			conf:         validConf,
-			credsCreator: NewMockCredentialsCreator(mockCtrl),
+			credsCreator: mocks.NewMockCredentialsCreator(mockCtrl),
 			wantErrMsg:   errMsgInitConnector,
 		},
 		{
@@ -84,7 +85,7 @@ func TestStorageProviderProvide(t *testing.T) {
 			},
 			conf:         validConf,
 			storeCreator: NewMockStorageCreator(mockCtrl),
-			credsCreator: NewMockCredentialsCreator(mockCtrl),
+			credsCreator: mocks.NewMockCredentialsCreator(mockCtrl),
 			wantErrMsg:   errMsgInitStorage,
 		},
 	}
@@ -96,7 +97,7 @@ func TestStorageProviderProvide(t *testing.T) {
 			if tt.expect != nil {
 				tt.expect(&tt)
 			}
-			storageProvider := NewGrafeasStorageProvider(NewMockDriver(mockCtrl), tt.credsCreator, tt.storeCreator)
+			storageProvider := NewGrafeasStorageProvider(mocks.NewMockDriver(mockCtrl), tt.credsCreator, tt.storeCreator)
 			storage, err := storageProvider.Provide("", &tt.conf)
 			if (err != nil) != (tt.wantErrMsg != "") {
 				if err != nil {

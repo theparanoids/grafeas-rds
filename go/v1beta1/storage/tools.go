@@ -2,9 +2,10 @@
 // Licensed under the terms of the Apache License 2.0.
 // See LICENSE file in project root for terms.
 //
+//go:build tools
 // +build tools
 
-package rds
+package storage
 
 // Although gomock is already in go.mod because
 // it is also used as a library by the testing code,

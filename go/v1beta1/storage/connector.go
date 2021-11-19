@@ -1,7 +1,7 @@
 // Copyright Yahoo 2021
 // Licensed under the terms of the Apache License 2.0.
 // See LICENSE file in project root for terms.
-package rds
+package storage
 
 import (
 	"database/sql/driver"
@@ -14,7 +14,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/rds/rdsutils"
 	"golang.org/x/net/context"
 
-	"github.com/theparanoids/grafeas-rds/rds/config"
+	"github.com/theparanoids/grafeas-rds/go/config"
 )
 
 const (

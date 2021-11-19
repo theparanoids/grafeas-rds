@@ -40,7 +40,7 @@ If the underlying database were PostgreSQL, the code would look like this:
 import (
     "log"
 
-    "github.com/theparanoids/grafeas-rds/rds"
+    "github.com/theparanoids/grafeas-rds/go/v1beta1/storage"
     "github.com/grafeas/grafeas/go/v1beta1/storage"
     "github.com/lib/pq"
 )
@@ -70,10 +70,10 @@ func main() {
 
 ## Configuration
 
-A valid configuration file can be found [here](rds/config/testdata/valid.yaml);
+A valid configuration file can be found [here](go/config/testdata/valid.yaml);
 it can be directly plugged into a configuration file for Grafeas server.
 
-Some default values are also provided in [`config.go`](rds/config/config.go).
+Some default values are also provided in [`config.go`](go/config/config.go).
 
 ## Contribute
 

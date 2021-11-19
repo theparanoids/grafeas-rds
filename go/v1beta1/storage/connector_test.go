@@ -1,7 +1,7 @@
 // Copyright Yahoo 2021
 // Licensed under the terms of the Apache License 2.0.
 // See LICENSE file in project root for terms.
-package rds
+package storage
 
 import (
 	"bytes"
@@ -14,8 +14,8 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/golang/mock/gomock"
-
-	"github.com/theparanoids/grafeas-rds/rds/config"
+	"github.com/theparanoids/grafeas-rds/go/config"
+	"github.com/theparanoids/grafeas-rds/go/v1beta1/mocks"
 )
 
 func TestNewConnector(t *testing.T) {
@@ -44,8 +44,8 @@ func TestNewConnector(t *testing.T) {
 	}
 
 	mockCtrl := gomock.NewController(t)
-	mockDriver := NewMockDriver(mockCtrl)
-	mockCredentialsCreator := NewMockCredentialsCreator(mockCtrl)
+	mockDriver := mocks.NewMockDriver(mockCtrl)
+	mockCredentialsCreator := mocks.NewMockCredentialsCreator(mockCtrl)
 	for _, tt := range tests {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
@@ -91,7 +91,7 @@ func TestConnectorConnect(t *testing.T) {
 	t.Parallel()
 
 	mockCtrl := gomock.NewController(t)
-	mockDriver := NewMockDriver(mockCtrl)
+	mockDriver := mocks.NewMockDriver(mockCtrl)
 	c := &connector{
 		dsn:    "some dsn",
 		driver: mockDriver,
@@ -107,7 +107,7 @@ func TestConnectorDriver(t *testing.T) {
 	t.Parallel()
 
 	mockCtrl := gomock.NewController(t)
-	want := NewMockDriver(mockCtrl)
+	want := mocks.NewMockDriver(mockCtrl)
 	c := &connector{driver: want}
 	got := c.Driver()
 	if got != want {
@@ -139,7 +139,7 @@ func TestSetupIAMAuth(t *testing.T) {
 	}
 
 	mockCtrl := gomock.NewController(t)
-	mockCredentialsCreator := NewMockCredentialsCreator(mockCtrl)
+	mockCredentialsCreator := mocks.NewMockCredentialsCreator(mockCtrl)
 	for _, tt := range tests {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {

@@ -37,7 +37,8 @@ jobs:
 
     - name: package
       run: |
-       tar -czvf grafeas-rds-${{ steps.v.outputs.tag }}-linux.tar.gz .
+       touch grafeas-rds-${{ steps.v.outputs.tag }}-linux.tar.gz 
+       tar --exclude=grafeas-rds-${{ steps.v.outputs.tag }}-linux.tar.gz -czvf grafeas-rds-${{ steps.v.outputs.tag }}-linux.tar.gz .
 
     - name: create release
       id: create-release

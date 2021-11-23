@@ -1,3 +1,5 @@
+[![Build Status][build-badge]][build-url] [![GoDoc][godoc-badge]][godoc] [![Go Report Card][goreport-card-badge]][goreport-card] [![Go Coverage][codecov-card-badge]][codecov-card]
+
 # grafeas-rds
 
 > AWS RDS backend for Grafeas. This library can periodically refresh the IAM authentication token which is used as the password to connect to an AWS RDS service.

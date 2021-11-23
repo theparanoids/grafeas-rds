@@ -85,3 +85,14 @@ We welcome issues, questions, and pull requests.
 ## License
 
 This project is licensed under the terms of the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) open source license. Please refer to [LICENSE](LICENSE) for the full terms.
+
+[build-badge]:     https://github.com/theparanoids/grafeas-rds/workflows/Linux/badge.svg
+[build-url]:       https://github.com/theparanoids/grafeas-rds/actions?query=branch%3Amain+workflow%3ALinux
+[golang]:          http://golang.org/
+[golang-install]:  http://golang.org/doc/install.html#releases
+[godoc-badge]:     https://pkg.go.dev/badge/github.com/theparanoids/grafeas-rds.svg
+[godoc]:           https://pkg.go.dev/github.com/theparanoids/grafeas-rds
+[goreport-card-badge]: https://goreportcard.com/badge/theparanoids/grafeas-rds
+[goreport-card]: https://goreportcard.com/report/theparanoids/grafeas-rds
+[codecov-card-badge]: https://codecov.io/gh/theparanoids/grafeas-rds/branch/main/graph/badge.svg
+[codecov-card]: https://codecov.io/gh/theparanoids/grafeas-rds

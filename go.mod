@@ -6,11 +6,11 @@ module github.com/theparanoids/grafeas-rds
 go 1.17
 
 require (
-	github.com/aws/aws-sdk-go v1.42.24
+	github.com/aws/aws-sdk-go v1.43.4
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/golang/mock v1.6.0
 	github.com/grafeas/grafeas v0.1.7-0.20210928191636-ff616c8055fd
-	golang.org/x/net v0.0.0-20211209124913-491a49abca63
+	golang.org/x/net v0.0.0-20211216030914-fe4d6282115f
 	google.golang.org/genproto v0.0.0-20210524171403-669157292da3 // indirect
 	google.golang.org/protobuf v1.27.1
 )

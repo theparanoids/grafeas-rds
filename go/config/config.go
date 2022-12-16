@@ -23,8 +23,9 @@ const (
 // json tags are required because
 // config.ConvertGenericConfigToSpecificType internally uses json package.
 type Config struct {
-	Host string `json:"host"`
-	Port int    `json:"port"`
+	Host   string `json:"host"`
+	Reader string `json:"reader"`
+	Port   int    `json:"port"`
 	// For rds_prostgres, DBName has to alrady exist and can be accessed by User.
 	DBName   string `json:"db_name"`
 	User     string `json:"user"`

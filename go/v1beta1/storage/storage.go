@@ -96,7 +96,7 @@ func (p GrafeasStorageProvider) Provide(_ string, confi *config.StorageConfigura
 	return grafeasStorage, nil
 }
 
-// ProvideRW returns a storage with different reader/writer which is configured based on the receiver's fields.
+// ProvideRW returns a storage which is configured based on the receiver's fields. The storage connects to different reader/writer. If no reader is provided, then it will only connect to the writer.
 func (p GrafeasStorageProvider) ProvideRW(_ string, confi *config.StorageConfiguration) (*storage.Storage, error) {
 	conf, err := rdsconfig.New(confi)
 	if err != nil {

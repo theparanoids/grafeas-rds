@@ -32,7 +32,7 @@ This project is intended to be used as a library.
 
 Import `github.com/theparanoids/grafeas-rds/rds` to use it.
 
-Note that the Go version has to be >= `1.17` (see [go.mod](go.mod)).
+Note that the Go version has to be >= `1.18` (see [go.mod](go.mod)).
 
 ## Usage
 

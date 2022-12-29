@@ -44,6 +44,7 @@ type Storage interface {
 // StorageCreator can be implemented based on the backend storage types (e.g. PostgreSQL, MySQL, etc.).
 type StorageCreator interface {
 	Create(connector driver.Connector, paginationKey string) (Storage, error)
+	CreateRW(readerConnector driver.Connector, writerConnector driver.Connector, paginationKey string) (Storage, error)
 }
 
 // CredentialsCreator can be implemented to create Credentials based on different types of providers.
@@ -77,12 +78,43 @@ func (p GrafeasStorageProvider) Provide(_ string, confi *config.StorageConfigura
 
 	// TODO: Use the context passed from main after
 	// the signature of RegisterStorageTypeProvider is updated to include it.
-	connector, err := newConnector(context.Background(), conf, p.drv, p.credentialsCreator, log.Default())
+	connector, err := newConnector(context.Background(), conf, p.drv, p.credentialsCreator, log.Default(), "")
 	if err != nil {
 		return nil, fmt.Errorf("%s, err: %v", errMsgInitConnector, err)
 	}
 
 	rdsStorage, err := p.storageCreator.Create(connector, conf.PaginationKey)
+	if err != nil {
+		return nil, fmt.Errorf("%s, err: %v", errMsgInitStorage, err)
+	}
+	setConnPoolParams(rdsStorage, conf.ConnPool)
+
+	grafeasStorage := &storage.Storage{
+		Ps: rdsStorage,
+		Gs: rdsStorage,
+	}
+	return grafeasStorage, nil
+}
+
+// ProvideRW returns a storage which is configured based on the receiver's fields. The storage connects to different reader/writer. If no reader is provided, then it will only connect to the writer.
+func (p GrafeasStorageProvider) ProvideRW(_ string, c *config.StorageConfiguration) (*storage.Storage, error) {
+	conf, err := rdsconfig.New(c)
+	if err != nil {
+		return nil, fmt.Errorf("%s, err: %v", errMsgInitConfig, err)
+	}
+
+	// TODO: Use the context passed from main after
+	// the signature of RegisterStorageTypeProvider is updated to include it.
+	writerConnector, err := newConnector(context.Background(), conf, p.drv, p.credentialsCreator, log.Default(), "")
+	if err != nil {
+		return nil, fmt.Errorf("%s, err: %v", errMsgInitConnector, err)
+	}
+	readerConnector, err := newConnector(context.Background(), conf, p.drv, p.credentialsCreator, log.Default(), conf.Reader)
+	if err != nil {
+		return nil, fmt.Errorf("%s, err: %v", errMsgInitConnector, err)
+	}
+
+	rdsStorage, err := p.storageCreator.CreateRW(readerConnector, writerConnector, conf.PaginationKey)
 	if err != nil {
 		return nil, fmt.Errorf("%s, err: %v", errMsgInitStorage, err)
 	}

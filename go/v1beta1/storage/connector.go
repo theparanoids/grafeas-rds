@@ -49,9 +49,13 @@ type connector struct {
 	dsnLock sync.RWMutex
 }
 
-func newConnector(ctx context.Context, conf *config.Config, driver driver.Driver, cc CredentialsCreator, logger *log.Logger) (*connector, error) {
+func newConnector(ctx context.Context, conf *config.Config, driver driver.Driver, cc CredentialsCreator, logger *log.Logger, overwriteHost string) (*connector, error) {
+	host := conf.Host
+	if overwriteHost != "" {
+		host = overwriteHost
+	}
 	c := &connector{
-		host:        conf.Host,
+		host:        host,
 		port:        conf.Port,
 		dbName:      conf.DBName,
 		user:        conf.User,

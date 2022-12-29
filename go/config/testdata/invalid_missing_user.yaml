@@ -5,6 +5,7 @@ grafeas:
   storage_type: "rds"
   rds:
     host: "some-host.rds.amazonaws.com"
+    reader: "some-host-ro.rds.amazonaws.com"
     ssl_root_cert: "/opt/rds-ca-2019-root.pem"
     pagination_key: "some_random_key"
     conn_pool:

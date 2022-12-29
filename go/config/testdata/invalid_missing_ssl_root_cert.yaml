@@ -5,6 +5,7 @@ grafeas:
   storage_type: "rds"
   rds:
     host: "some-host.rds.amazonaws.com"
+    reader: "some-host-ro.rds.amazonaws.com"
     user: "grafeas_rw"
     pagination_key: "some_random_key"
     conn_pool:

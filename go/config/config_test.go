@@ -26,6 +26,7 @@ func TestNewConfig(t *testing.T) {
 			file: "valid.yaml",
 			wantConfig: Config{
 				Host:          "some-host.rds.amazonaws.com",
+				Reader:        "some-host-ro.rds.amazonaws.com",
 				Port:          defaultPort,
 				DBName:        defaultDBName,
 				User:          "grafeas_rw",

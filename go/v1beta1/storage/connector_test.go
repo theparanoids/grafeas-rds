@@ -63,7 +63,7 @@ func TestNewConnector(t *testing.T) {
 			}
 			var buf bytes.Buffer
 			logger := log.New(&buf, "", 0)
-			c, err := newConnector(ctx, &conf, mockDriver, cc, logger)
+			c, err := newConnector(ctx, &conf, mockDriver, cc, logger, "")
 			if (err == nil) != (tt.wantErrMsg == "") {
 				if err == nil {
 					t.Error("want error, but no error is returned")

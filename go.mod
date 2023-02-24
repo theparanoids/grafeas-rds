@@ -9,9 +9,9 @@ require (
 	github.com/aws/aws-sdk-go v1.44.208
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/golang/mock v1.6.0
-	github.com/grafeas/grafeas v0.1.7-0.20210928191636-ff616c8055fd
+	github.com/grafeas/grafeas v0.2.1
 	golang.org/x/net v0.7.0
-	google.golang.org/genproto v0.0.0-20210524171403-669157292da3 // indirect
+	google.golang.org/genproto v0.0.0-20220118154757-00ab72f36ad5 // indirect
 	google.golang.org/protobuf v1.28.1
 )
 
@@ -19,9 +19,9 @@ require (
 	github.com/boltdb/bolt v1.3.1 // indirect
 	github.com/fernet/fernet-go v0.0.0-20191111064656-eff2850e6001 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/google/go-cmp v0.5.5 // indirect
+	github.com/google/go-cmp v0.5.7 // indirect
 	github.com/google/uuid v1.1.2 // indirect
-	github.com/grpc-ecosystem/grpc-gateway/v2 v2.0.1 // indirect
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.7.3 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/lib/pq v1.8.0 // indirect
@@ -39,7 +39,7 @@ require (
 	golang.org/x/text v0.7.0 // indirect
 	golang.org/x/tools v0.1.12 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
-	google.golang.org/grpc v1.36.1 // indirect
+	google.golang.org/grpc v1.43.0 // indirect
 	gopkg.in/ini.v1 v1.57.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )

@@ -9,7 +9,7 @@ require (
 	github.com/aws/aws-sdk-go v1.44.331
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/golang/mock v1.6.0
-	github.com/grafeas/grafeas v0.2.2
+	github.com/grafeas/grafeas v0.2.3
 	golang.org/x/net v0.14.0
 	google.golang.org/genproto v0.0.0-20220118154757-00ab72f36ad5 // indirect
 	google.golang.org/protobuf v1.31.0

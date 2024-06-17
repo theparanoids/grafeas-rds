@@ -12,7 +12,7 @@ require (
 	github.com/grafeas/grafeas v0.2.3
 	golang.org/x/net v0.25.0
 	google.golang.org/genproto v0.0.0-20220118154757-00ab72f36ad5 // indirect
-	google.golang.org/protobuf v1.33.0
+	google.golang.org/protobuf v1.34.2
 )
 
 require (
